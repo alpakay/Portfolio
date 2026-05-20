@@ -1,0 +1,169 @@
+---
+// Sticky top navigation with language toggle (TR | EN segmented).
+---
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-brand" aria-label="Ahmet Alp Akay">
+      <span class="nav-brand-mark">α</span>
+      <span class="nav-brand-text">alpakay<span class="nav-brand-dot">.</span>dev</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about" class="nav-link">
+        <span data-l="tr">Hakkımda</span>
+        <span data-l="en">About</span>
+      </a>
+      <a href="#projects" class="nav-link">
+        <span data-l="tr">Projeler</span>
+        <span data-l="en">Projects</span>
+      </a>
+      <a href="#skills" class="nav-link">
+        <span data-l="tr">Yetkinlikler</span>
+        <span data-l="en">Skills</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <span data-l="tr">İletişim</span>
+        <span data-l="en">Contact</span>
+      </a>
+    </div>
+
+    <div class="lang-toggle" role="group" aria-label="Language selector">
+      <button type="button" class="lang-btn" data-lang-btn="tr" aria-pressed="true">TR</button>
+      <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+      <span class="lang-toggle-thumb" aria-hidden="true"></span>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 14px 0;
+    transition: background 240ms ease, border-color 240ms ease, backdrop-filter 240ms ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav.is-scrolled {
+    background: rgba(15, 15, 15, 0.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-size: 16px;
+  }
+
+  .nav-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: #0F0F0F;
+    border-radius: 6px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .nav-brand-text { color: var(--text); }
+  .nav-brand-dot { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color var(--transition);
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--transition);
+  }
+
+  .nav-link:hover { color: var(--text); }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  /* ---------- Language toggle (segmented) ---------- */
+  .lang-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px;
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    transition: color var(--transition);
+  }
+
+  .lang-btn[aria-pressed='true'] { color: #0F0F0F; }
+  .lang-btn:not([aria-pressed='true']):hover { color: var(--text); }
+
+  .lang-toggle-thumb {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    width: calc(50% - 3px);
+    background: var(--accent);
+    border-radius: 999px;
+    transition: transform 280ms cubic-bezier(0.6, 0.05, 0.2, 1);
+    z-index: 0;
+  }
+
+  html[lang='tr'] .lang-toggle-thumb { transform: translateX(0); }
+  html[lang='en'] .lang-toggle-thumb { transform: translateX(100%); }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-inner { gap: 12px; }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+
+const titleTr = 'Ahmet Alp Akay — Unity Game Developer';
+const titleEn = 'Ahmet Alp Akay — Unity Game Developer';
+const descTr = 'Performans odaklı sistemler ve ölçeklenebilir oynanış mimarisi üzerine çalışan bir Unity oyun geliştiricisi. Mobil ve PC projeleri yayınlandı.';
+const descEn = 'Unity game developer focused on performance-critical systems and scalable gameplay architecture. Published mobile and PC titles.';
+---
+<Layout titleTr={titleTr} titleEn={titleEn} descTr={descTr} descEn={descEn}>
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <Experience />
+    <Contact />
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        © <span id="year">2026</span> Ahmet Alp Akay
+      </div>
+      <div>
+        <span data-l="tr">Astro ile yapıldı · GitHub Pages</span>
+        <span data-l="en">Built with Astro · GitHub Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</Layout>
