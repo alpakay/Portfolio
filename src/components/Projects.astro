@@ -1,18 +1,20 @@
 ---
 import Icons from './Icons.astro';
 ---
-<section class="section" id="projects">
+<section class="section section-projects" id="projects">
+  <canvas class="game-canvas" data-game="pong" aria-hidden="true"></canvas>
+
   <div class="container">
-    <div class="reveal">
-      <span class="section-tag">
-        <span data-l="tr">02 — Projeler</span>
-        <span data-l="en">02 — Projects</span>
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <span class="eyebrow-num">02</span>
+        <span data-l="tr">· Projeler</span>
+        <span data-l="en">· Projects</span>
       </span>
       <h2 class="section-title">
-        <span data-l="tr">Seçilmiş Çalışmalar</span>
-        <span data-l="en">Selected Work</span>
+        <span data-l="tr">Seçilmiş çalışmalar</span>
+        <span data-l="en">Selected work</span>
       </h2>
-      <div class="section-divider"></div>
     </div>
 
     <!-- ===================== Animal Merge ===================== -->
@@ -30,10 +32,10 @@ import Icons from './Icons.astro';
         </div>
 
         <div class="project-body">
-          <div class="project-tag">
+          <span class="project-tag">
             <span data-l="tr">PROJE · MOBİL</span>
             <span data-l="en">PROJECT · MOBILE</span>
-          </div>
+          </span>
           <h3 class="project-title">Animal Merge</h3>
 
           <div class="project-meta">
@@ -49,10 +51,7 @@ import Icons from './Icons.astro';
                 <span data-l="tr">Rol</span>
                 <span data-l="en">Role</span>
               </span>
-              <span class="project-meta-value">
-                <span data-l="tr">Solo Developer</span>
-                <span data-l="en">Solo Developer</span>
-              </span>
+              <span class="project-meta-value">Solo Developer</span>
             </div>
             <div class="project-meta-item">
               <span class="project-meta-label">Engine</span>
@@ -84,10 +83,10 @@ import Icons from './Icons.astro';
             <span class="tech-chip">Unity URP</span>
             <span class="tech-chip">C#</span>
             <span class="tech-chip">Unity 2D Physics</span>
-            <span class="tech-chip">Google Play Games Services</span>
-            <span class="tech-chip">Unity Localization</span>
-            <span class="tech-chip">Android Build Pipeline</span>
-            <span class="tech-chip">Google Play Console</span>
+            <span class="tech-chip">Play Games Services</span>
+            <span class="tech-chip">Localization</span>
+            <span class="tech-chip">Android Build</span>
+            <span class="tech-chip">Play Console</span>
           </div>
 
           <a
@@ -97,7 +96,7 @@ import Icons from './Icons.astro';
             class="btn btn-primary"
           >
             <Icons name="play" size={14} />
-            <span data-l="tr">Google Play'de Görüntüle</span>
+            <span data-l="tr">Google Play'de görüntüle</span>
             <span data-l="en">View on Google Play</span>
           </a>
         </div>
@@ -130,10 +129,10 @@ import Icons from './Icons.astro';
         </div>
 
         <div class="project-body">
-          <div class="project-tag">
+          <span class="project-tag">
             <span data-l="tr">PROJE · PC</span>
             <span data-l="en">PROJECT · PC</span>
-          </div>
+          </span>
           <h3 class="project-title">Mega Boom 2</h3>
 
           <div class="project-meta">
@@ -188,7 +187,7 @@ import Icons from './Icons.astro';
             <span class="tech-chip">Unity URP</span>
             <span class="tech-chip">C#</span>
             <span class="tech-chip">ScriptableObjects</span>
-            <span class="tech-chip">Custom Object Pooling</span>
+            <span class="tech-chip">Object Pooling</span>
             <span class="tech-chip">Unity Profiler</span>
             <span class="tech-chip">3D Physics</span>
           </div>
@@ -200,7 +199,7 @@ import Icons from './Icons.astro';
             class="btn btn-primary"
           >
             <Icons name="play" size={14} />
-            <span data-l="tr">Itch.io'da Oyna</span>
+            <span data-l="tr">Itch.io'da oyna</span>
             <span data-l="en">Play on Itch.io</span>
           </a>
         </div>

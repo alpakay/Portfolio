@@ -36,7 +36,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
   <meta name="twitter:description" content={descTr} />
   <meta name="twitter:image" content={new URL('/images/megaboom-1.jpg', Astro.site).toString()} />
 
-  <meta name="theme-color" content="#0F0F0F" />
+  <meta name="theme-color" content="#fffefb" />
   <meta name="author" content="Ahmet Alp Akay" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,7 +46,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
   />
 
-  <!-- Hidden alternate locale title/description for SEO crawlers -->
   <meta name="description-en" content={descEn} />
   <link rel="alternate" hreflang="tr" href={canonical} />
   <link rel="alternate" hreflang="en" href={canonical} />
@@ -67,6 +66,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 <body>
   <slot />
 
+  <script src="/games.js" defer></script>
+
   <script define:vars={{ titleTr, titleEn, descTr, descEn }}>
     // ---------- Language toggle ----------
     (function () {
@@ -83,7 +84,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
         });
       }
 
-      // Initial sync (in case the pre-paint script ran)
       applyLang(html.lang === 'en' ? 'en' : 'tr');
 
       document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
@@ -108,24 +108,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    })();
-
-    // ---------- Hero pointer parallax ----------
-    (function () {
-      var orb = document.querySelector('.hero-orb');
-      if (!orb || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var hero = orb.closest('.hero');
-      if (!hero) return;
-
-      hero.addEventListener('pointermove', function (e) {
-        var rect = hero.getBoundingClientRect();
-        var x = ((e.clientX - rect.left) / rect.width - 0.5) * 60;
-        var y = ((e.clientY - rect.top) / rect.height - 0.5) * 60;
-        orb.style.transform = 'translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))';
-      });
-      hero.addEventListener('pointerleave', function () {
-        orb.style.transform = 'translate(-50%, -50%)';
-      });
     })();
 
     // ---------- Stats counter ----------
@@ -163,7 +145,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       var nav = document.querySelector('.nav');
       if (!nav) return;
       function onScroll() {
-        if (window.scrollY > 12) nav.classList.add('is-scrolled');
+        if (window.scrollY > 24) nav.classList.add('is-scrolled');
         else nav.classList.remove('is-scrolled');
       }
       onScroll();

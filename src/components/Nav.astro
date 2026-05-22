@@ -4,8 +4,8 @@
 <nav class="nav">
   <div class="container nav-inner">
     <a href="#top" class="nav-brand" aria-label="Ahmet Alp Akay">
-      <span class="nav-brand-mark">α</span>
-      <span class="nav-brand-text">alpakay<span class="nav-brand-dot">.</span>dev</span>
+      <span class="nav-brand-mark">P</span>
+      <span class="nav-brand-text">alpakay<span class="nav-brand-dot">.dev</span></span>
     </a>
 
     <div class="nav-links">
@@ -20,6 +20,10 @@
       <a href="#skills" class="nav-link">
         <span data-l="tr">Yetkinlikler</span>
         <span data-l="en">Skills</span>
+      </a>
+      <a href="#experience" class="nav-link">
+        <span data-l="tr">Deneyim</span>
+        <span data-l="en">Experience</span>
       </a>
       <a href="#contact" class="nav-link">
         <span data-l="tr">İletişim</span>
@@ -48,10 +52,10 @@
   }
 
   .nav.is-scrolled {
-    background: rgba(15, 15, 15, 0.82);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border-bottom-color: var(--border);
+    background: rgba(255, 254, 251, 0.86);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom-color: var(--border-soft);
   }
 
   .nav-inner {
@@ -74,19 +78,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     background: var(--accent);
-    color: #0F0F0F;
-    border-radius: 6px;
-    font-weight: 800;
-    font-family: var(--font-mono);
-    font-size: 16px;
+    color: var(--on-accent);
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 24px;
     line-height: 1;
   }
 
-  .nav-brand-text { color: var(--text); }
-  .nav-brand-dot { color: var(--accent); }
+  .nav-brand-text { color: var(--ink); }
+  .nav-brand-dot { color: var(--accent); font-weight: 700; }
 
   .nav-links {
     display: flex;
@@ -96,7 +99,7 @@
 
   .nav-link {
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--ink-soft);
     font-weight: 500;
     transition: color var(--transition);
     position: relative;
@@ -107,15 +110,15 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -4px;
+    bottom: -6px;
     height: 2px;
     background: var(--accent);
     transform: scaleX(0);
     transform-origin: left center;
-    transition: transform var(--transition);
+    transition: transform 200ms var(--ease);
   }
 
-  .nav-link:hover { color: var(--text); }
+  .nav-link:hover { color: var(--ink); }
   .nav-link:hover::after { transform: scaleX(1); }
 
   /* ---------- Language toggle (segmented) ---------- */
@@ -123,8 +126,8 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--canvas-soft);
+    border: 1px solid var(--border-soft);
     border-radius: 999px;
     padding: 3px;
     overflow: hidden;
@@ -135,7 +138,7 @@
     z-index: 1;
     background: transparent;
     border: none;
-    color: var(--text-muted);
+    color: var(--body);
     padding: 6px 14px;
     font-family: var(--font-mono);
     font-size: 12px;
@@ -145,15 +148,15 @@
     transition: color var(--transition);
   }
 
-  .lang-btn[aria-pressed='true'] { color: #0F0F0F; }
-  .lang-btn:not([aria-pressed='true']):hover { color: var(--text); }
+  .lang-btn[aria-pressed='true'] { color: var(--canvas); }
+  .lang-btn:not([aria-pressed='true']):hover { color: var(--ink); }
 
   .lang-toggle-thumb {
     position: absolute;
     top: 3px;
     bottom: 3px;
     width: calc(50% - 3px);
-    background: var(--accent);
+    background: var(--ink);
     border-radius: 999px;
     transition: transform 280ms cubic-bezier(0.6, 0.05, 0.2, 1);
     z-index: 0;
@@ -162,7 +165,7 @@
   html[lang='tr'] .lang-toggle-thumb { transform: translateX(0); }
   html[lang='en'] .lang-toggle-thumb { transform: translateX(100%); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 760px) {
     .nav-links { display: none; }
     .nav-inner { gap: 12px; }
   }

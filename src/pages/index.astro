@@ -8,10 +8,10 @@ import Skills from '../components/Skills.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
 
-const titleTr = 'Ahmet Alp Akay — Unity Game Developer';
-const titleEn = 'Ahmet Alp Akay — Unity Game Developer';
-const descTr = 'Performans odaklı sistemler ve ölçeklenebilir oynanış mimarisi üzerine çalışan bir Unity oyun geliştiricisi. Mobil ve PC projeleri yayınlandı.';
-const descEn = 'Unity game developer focused on performance-critical systems and scalable gameplay architecture. Published mobile and PC titles.';
+const titleTr = 'Ahmet Alp Akay — Unity Game Developer · alpakay.dev';
+const titleEn = 'Ahmet Alp Akay — Unity Game Developer · alpakay.dev';
+const descTr = 'Unity oyun geliştiricisi. Performans odaklı sistemler, ölçeklenebilir oynanış mimarisi.';
+const descEn = 'Unity game developer. Performance-critical systems, scalable gameplay architecture.';
 ---
 <Layout titleTr={titleTr} titleEn={titleEn} descTr={descTr} descEn={descEn}>
   <Nav />
@@ -25,13 +25,15 @@ const descEn = 'Unity game developer focused on performance-critical systems and
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        © <span id="year">2026</span> Ahmet Alp Akay
-      </div>
-      <div>
-        <span data-l="tr">Astro ile yapıldı · GitHub Pages</span>
-        <span data-l="en">Built with Astro · GitHub Pages</span>
+    <div class="footer-inner">
+      <div>© <span id="year">2026</span> Ahmet Alp Akay · <span data-l="tr">Tüm hakları saklıdır</span><span data-l="en">All rights reserved</span></div>
+      <div class="footer-meta">
+        <span class="dot dot-on" aria-hidden="true"></span>
+        <span data-l="tr">İş arıyor</span>
+        <span data-l="en">Open to work</span>
+        <span class="footer-sep">·</span>
+        <span data-l="tr">alpakay.dev üzerinde inşa edildi</span>
+        <span data-l="en">Built on alpakay.dev</span>
       </div>
     </div>
   </footer>

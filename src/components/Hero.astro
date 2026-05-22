@@ -1,35 +1,33 @@
 ---
 import Icons from './Icons.astro';
 ---
-<section class="hero" id="top">
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
+<section class="hero section section-hero" id="top">
+  <canvas class="game-canvas" data-game="snake" aria-hidden="true"></canvas>
 
   <div class="container hero-inner">
-    <div class="reveal">
-      <p class="hero-eyebrow">
-        <span data-l="tr">Game Developer Portfolio · 2026</span>
-        <span data-l="en">Game Developer Portfolio · 2026</span>
-      </p>
-    </div>
+    <p class="hero-eyebrow reveal">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-l="tr">Game Developer Portfolio · 2026</span>
+      <span data-l="en">Game Developer Portfolio · 2026</span>
+    </p>
 
     <h1 class="hero-title reveal" data-delay="1">Ahmet Alp Akay</h1>
 
-    <p class="hero-subtitle reveal" data-delay="2">
-      <span data-l="tr">Unity Game Developer</span>
-      <span data-l="en">Unity Game Developer</span>
+    <p class="hero-subtitle script reveal" data-delay="2">
+      <span data-l="tr">Unity oyun geliştiricisi</span>
+      <span data-l="en">Unity game developer</span>
     </p>
 
     <p class="hero-tagline reveal" data-delay="3">
-      <span data-l="tr">Performans odaklı sistemler ve ölçeklenebilir oynanış mimarisi üzerine çalışan bir Unity oyun geliştiricisi. Object pooling, prosedürel zorluk tasarımı ve gerçek zamanlı dövüş mekanikleri konularında deneyim.</span>
-      <span data-l="en">Unity game developer focused on performance-critical systems and scalable gameplay architecture. Experienced in object pooling, procedural difficulty design, and real-time combat mechanics.</span>
+      <span data-l="tr">Performans odaklı sistemler ve ölçeklenebilir oynanış mimarisi üzerine çalışıyorum. Object pooling, prosedürel zorluk tasarımı ve gerçek zamanlı dövüş mekanikleri.</span>
+      <span data-l="en">I work on performance-critical systems and scalable gameplay architecture. Object pooling, procedural difficulty, real-time combat mechanics.</span>
     </p>
 
     <div class="hero-actions reveal" data-delay="4">
       <a href="#projects" class="btn btn-primary">
         <Icons name="play" size={14} />
-        <span data-l="tr">Projelere Bak</span>
-        <span data-l="en">View Projects</span>
+        <span data-l="tr">Projelere bak</span>
+        <span data-l="en">View projects</span>
       </a>
       <a href="https://github.com/alpakay" target="_blank" rel="noopener" class="btn">
         <Icons name="github" size={14} />
@@ -47,7 +45,7 @@ import Icons from './Icons.astro';
   </div>
 
   <a href="#about" class="hero-scroll" aria-label="Scroll down">
-    <span data-l="tr">Aşağı kaydır</span>
-    <span data-l="en">Scroll</span>
+    <span data-l="tr">aşağı kaydır</span>
+    <span data-l="en">scroll down</span>
   </a>
 </section>
