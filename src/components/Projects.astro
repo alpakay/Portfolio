@@ -205,5 +205,77 @@ import Icons from './Icons.astro';
         </div>
       </div>
     </article>
+
+    <!--
+      ===================== WORK IN PROGRESS =====================
+      Teaser kartları: isim ve görsel gizli, tür + platform + teknik
+      kanca görünür. Gerçek detayları aşağıdaki alanlardan düzenle:
+      - .project-title-locked içindeki kod adı (blur'lu görünür)
+      - .project-meta-value değerleri (platform / tür)
+      - .project-description teaser cümlesi
+    -->
+
+    <!-- ===================== WIP · Project NOVA ===================== -->
+    <article class="project project-wip reveal">
+      <div class="project-grid">
+        <div class="project-media project-media-wip" aria-hidden="true">
+          <span class="project-wip-badge">
+            <span class="dot"></span>
+            <span data-l="tr">Geliştiriliyor</span>
+            <span data-l="en">In Development</span>
+          </span>
+        </div>
+
+        <div class="project-body">
+          <span class="project-tag project-tag-wip">
+            <span data-l="tr">PROJE · YAKINDA</span>
+            <span data-l="en">PROJECT · COMING SOON</span>
+          </span>
+          <h3 class="project-title project-title-locked" title="Untitled">2D ROGUELITE</h3>
+
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label">
+                <span data-l="tr">Platform</span>
+                <span data-l="en">Platform</span>
+              </span>
+              <span class="project-meta-value">PC<span class="tba">(TBA)</span></span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label">
+                <span data-l="tr">Rol</span>
+                <span data-l="en">Role</span>
+              </span>
+              <span class="project-meta-value">Solo Developer</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label">
+                <span data-l="tr">Tür</span>
+                <span data-l="en">Genre</span>
+              </span>
+              <span class="project-meta-value">2D Action Roguelite</span>
+            </div>
+          </div>
+
+          <p class="project-description">
+            <span data-l="tr">Şu anki odağım: prosedürel üretilen bölümleri kararlı kare hızında ayakta tutan, data-driven bir dövüş ve ilerleme mimarisi. Daha fazlası çok yakında.</span>
+            <span data-l="en">Current focus: a data-driven combat and progression architecture that keeps procedurally generated levels running at a stable frame rate. More to reveal soon.</span>
+          </p>
+
+          <div class="project-tech">
+            <span class="tech-chip">Unity URP</span>
+            <span class="tech-chip">C#</span>
+            <span class="tech-chip">Object Pooling</span>
+            <span class="tech-chip">ScriptableObjects</span>
+            <span class="tech-chip tech-chip-locked">? ? ?</span>
+          </div>
+
+          <button class="btn btn-wip" type="button" disabled aria-disabled="true">
+            <span data-l="tr">Yakında duyurulacak</span>
+            <span data-l="en">To be announced</span>
+          </button>
+        </div>
+      </div>
+    </article>
   </div>
 </section>

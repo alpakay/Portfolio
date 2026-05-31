@@ -633,23 +633,44 @@
 
     function update(s, dt) {
       const dts = dt / 1000;
-      s.flash = Math.max(0, s.flash - dts);
 
-      if (s.flash > 0) return;
+      if (s.flash > 0) {
+        s.flash = Math.max(0, s.flash - dts);
+        if (s.flash > 0) return;
+        /* Flash just finished: collapse the cleared rows NOW, in-frame, so
+           the board is fully settled before the next piece is planned.
+           Previously this ran on a real-time setTimeout that raced the
+           frame-based flash timer — the AI could plan against the
+           pre-collapse board, leaving new pieces stranded one row high. */
+        if (s.flashRows.length > 0) {
+          const kept = s.board.filter((_, r) => !s.flashRows.includes(r));
+          while (kept.length < s.ROWS) kept.unshift(Array(s.COLS).fill(0));
+          s.board = kept;
+          s.lines += s.flashRows.length;
+          s.flashRows = [];
+        }
+        return;
+      }
 
       if (!s.cur) {
         const kind = s.next;
         s.next = pickKind();
-        const plan = aiChoose(s, kind);
+        let plan = aiChoose(s, kind);
+        /* Game over: the planned landing no longer fits. Wipe the well
+           and RE-PLAN against the empty board — otherwise the piece keeps
+           the stale (negative) targetRow computed for the full board and
+           locks near the top, stranding a block that can never be cleared. */
+        if (!fits(s, s.board, kind, plan.rot, plan.col, plan.row)) {
+          s.board = Array.from({ length: s.ROWS }, () => Array(s.COLS).fill(0));
+          s.lines = 0;
+          plan = aiChoose(s, kind);
+        }
         const startCol = Math.floor((s.COLS - shapeOf(kind, plan.rot)[0].length) / 2);
         s.cur = {
           kind, rot: plan.rot, col: startCol,
           targetCol: plan.col,
           row: -2, targetRow: plan.row, locked: false,
         };
-        if (!fits(s, s.board, kind, plan.rot, plan.col, plan.row)) {
-          s.board = Array.from({ length: s.ROWS }, () => Array(s.COLS).fill(0));
-        }
         return;
       }
 
@@ -675,18 +696,8 @@
         if (full.length > 0) {
           s.flashRows = full.slice();
           s.flash = 0.42;
-          s.cur = null;
-          setTimeout(() => {
-            for (const r of full) {
-              s.board.splice(r, 1);
-              s.board.unshift(Array(s.COLS).fill(0));
-            }
-            s.lines += full.length;
-            s.flashRows = [];
-          }, 420);
-        } else {
-          s.cur = null;
         }
+        s.cur = null;
       }
     }
 
@@ -761,7 +772,18 @@
         ctx.fillText(String(s.lines).padStart(3, '0'), sideX + 4, wy + 4 * CELL + 56);
       }
 
-      drawHUD(ctx, s.w, s.h, '', opts.label);
+      /* Title is centred over the well (not pinned to the canvas's
+         right edge like the other games) so it reads as the heading
+         of the play area in the narrow side canvases. */
+      if (opts.label) {
+        ctx.save();
+        ctx.font = 'bold 10px "JetBrains Mono", Menlo, monospace';
+        ctx.fillStyle = 'rgba(32,21,21,0.45)';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.fillText(opts.label, wx + wellW / 2, 18);
+        ctx.restore();
+      }
     }
 
     return function tick(ctx, w, h, dt, opts) {
